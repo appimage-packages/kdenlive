@@ -47,6 +47,8 @@ frameworks:
     - plasma-framework
     - kdecoration
     - breeze
+    - knotifyconfig
+    - kfilemetadata
 type: git
 url: http://anongit.kde.org/kdenlive
 buildsystem: cmake
