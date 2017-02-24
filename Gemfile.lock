@@ -1,0 +1,54 @@
+GIT
+  remote: https://github.com/libgit2/rugged.git
+  revision: 86131e5dc29af251f1a82cb02a36122241c0fba3
+  submodules: true
+  specs:
+    rugged (0.25.0b10)
+
+GIT
+  remote: https://github.com/swipely/docker-api
+  revision: 792d0293f3371eb1aa795fc4043322513b0889c2
+  specs:
+    docker-api (1.32.1)
+      excon (>= 0.38.0)
+      json
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.2.5)
+    excon (0.54.0)
+    fileutils (0.7)
+      rmagick (>= 2.13.1)
+    json (2.0.2)
+    logger (1.2.8)
+    logger-colors (1.0.0)
+    rmagick (2.16.0)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  docker-api!
+  fileutils
+  logger
+  logger-colors
+  rspec
+  rugged!
+
+BUNDLED WITH
+   1.13.2

@@ -1,0 +1,159 @@
+#!/bin/bash
+#
+# Copyright (C) 2016 Scarlett Clark <sgclark@kde.org>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) version 3, or any
+# later version accepted by the membership of KDE e.V. (or its
+# successor approved by the membership of KDE e.V.), which shall
+# act as a proxy defined in Section 6 of version 3 of the license.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+
+cd /
+
+# Get helper functions
+wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+. ./functions.sh
+rm -f functions.sh
+
+mkdir /<%= name %>.AppDir/
+
+cd /
+wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
+chmod a+x linuxdeployqt-1-x86_64.AppImage
+
+cd /<%= name %>.AppDir
+
+#Move binary/desktop/icon into AppDir
+mv /opt/usr/bin/<%= binary %> .
+mv /opt/usr/share/applications/org.kde.<%= binary %>.desktop <%= binary %>.desktop
+cp /opt/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
+
+
+#All the plugins do not seem to be getting in. Manual copy.
+mkdir -p ./plugins; cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend $_
+mkdir -p ./usr/{share,bin,sbin,lib}
+mkdir ./etc
+
+rsync -aruxv --progress /opt/usr/plugins/ ./plugins/
+rsync -aruxv --progress /opt/usr/share/ ./usr/share/
+rsync -aruxv --progress /opt/etc/ ./etc/
+rsync -aruxv --progress /opt/usr/qml/ ./qml/
+rsync -aruxv --progress /opt/usr/resources/ ./usr/bin/
+rsync -aruxv --progress /opt/usr/translations/ ./usr/bin/
+cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./usr/lib/
+
+cp /opt/usr/bin/gst* ./usr/bin/
+cp /opt/usr/bin/k* ./usr/bin/
+
+mkdir ./lib
+rm -rfv /opt/usr/lib/gstreamer-1.0/include
+cp /opt/usr/lib/gstreamer-1.0/* ./lib/
+cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./lib/
+cp -rfv /usr/share/mime ./usr/share/
+cp /etc/mime.types ./etc/
+update-mime-database ./usr/share/mime
+
+mv /opt/usr/libexec/Qt* ./usr/bin/ || true
+mv /opt/usr/lib/x86_64-linux-gnu/libexec/kf5/* ./usr/bin/ || true
+mv /opt/usr/libexec/gstreamer-1.0/* ./usr/bin || true
+cp -rfv /opt/usr/lib/x86_64-linux-gnu/* /opt/usr/lib/
+unset LD_LIBRARY_PATH
+../linuxdeployqt-1-x86_64.AppImage <%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
+
+patch_usr
+glibc_needed
+delete_blacklisted
+#Cleanup
+# We don't bundle the developer stuff
+rm -rf ./usr/include || true
+rm -rf ./usr/lib/cmake || true
+rm -rf ./lib/cmake || true
+rm -rf ./usr/lib/pkgconfig || true
+rm -rf ./usr/share/ECM/ || true
+rm -rf ./usr/share/gettext || true
+rm -rf ./usr/share/pkgconfig || true
+rm -rf ./usr/mkspecs/ || true
+rm -rf ./usr/gettext-* || true
+rm -rf ./usr/autoconf-* || true
+rm -rf ./usr/automake-* || true
+rm -rf ./usr/libtool-* || true
+rm -rf ./libexec || true
+rm -rf ./usr/share/cmake-3.8 || true
+rm -rf ./usr/share/man || true
+rm -rf ./usr/share/doc/ECM || true
+rm -rf ./usr/share/doc/libdbusmenu-qt5-doc || true
+rm -rf ./usr/share/gtk-doc || true
+rm -rf ./usr/share/wallpapers || true
+rm -rf ./usr/share/aclocal || true
+rm -rf ./usr/share/bash-completion || true
+rm -rf ./usr/share/common-lisp || true
+rm -rf ./usr/share/cups || true
+rm -rf ./usr/share/doc/{cups,gettext,gnupg,libasprintf,pcre} || true
+rm -rf ./usr/share/gir-1.0 || true
+rm -rf ./usr/share/gnupg || true
+rm -rf ./usr/share/gobject-introspection-1.0 || true
+rm -rf ./usr/share/util-macros || true
+find . -name '*.a' -exec rm {} \;
+strip -g $(find . -type f -exec) || true
+find . -type f -exec file {} \; | grep "not stripped"
+#Add back libkrb5
+cp /usr/lib/x86_64-linux-gnu/libkrb5* ./lib/
+get_desktopintegration <%= name %>
+cd /app/src
+git clone git://anongit.kde.org/scratch/brauch/appimage-exec-wrapper
+cd /app/src/appimage-exec-wrapper/
+make clean
+make
+cp -v exec.so /<%= name %>.AppDir/exec_wrapper.so
+rm -rfv  /app/src/appimage-exec-wrapper
+cd /<%= name %>.AppDir
+rm AppRun
+#Create AppRun
+cat > AppRun << EOF
+#!/bin/bash
+DIR="\`dirname \"\$0\"\`"
+HERE="\`( cd \"\$DIR\" && pwd )\`"
+export LD_PRELOAD=\$HERE/exec_wrapper.so
+export QML2_IMPORT_PATH=\$HERE/qml
+export QT_PLUGIN_PATH=\$HERE/plugins
+export GRANTLEE_PLUGIN_PATH=\$HERE/plugins
+export PATH=\$HERE/usr/bin/:\$HERE/usr/sbin/:\$HERE/usr/games/:\$HERE/bin/:\$HERE/sbin/:\$PATH
+export LD_LIBRARY_PATH=\$HERE/usr/lib/:\$HERE/usr/lib/x86_64-linux-gnu/:\$HERE/usr/lib64/:\$HERE/lib/:\$HERE/lib/x86_64-linux-gnu/:\$HERE/lib64/:\$LD_LIBRARY_PATH
+export XDG_DATA_DIRS=\$HERE/usr/share:\$HOME/.local/share:\$HERE/share:/usr/local/share/:/usr/share:\$XDG_DATA_DIRS
+export XDG_DATA_HOME=\$HOME/.local/share
+export XDG_CONFIG_DIRS=\$HERE/.config:\$HERE/etc/xdg:\$XDG_CONFIG_DIRS
+export KDE_FORK_SLAVES=1
+export KF5_LIBEXEC_DIR=\$HERE/usr/bin
+export GST_PLUGIN_PATH=\$HERE/lib
+export GST_PLUGIN_SCANNER=\$HERE/bin
+
+<%= binary %> $@
+
+EOF
+chmod +x AppRun
+mv <%= binary %> ./usr/bin/
+cp <%= binary %>.desktop ./usr/share/applications/
+cd /
+wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
+chmod a+x appimagetool-x86_64.AppImage
+
+ARCH=$(arch)
+DATE=$(date +"%Y%m%d")
+
+APPIMAGEFILENAME="<%= name %>-git$DATE-$ARCH.AppImage"
+
+#Re set LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/usr/lib:/opt/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib64
+gpg2 --import /root/.gnupg/appimage.key
+./appimagetool-x86_64.AppImage -v -s -u "zsync|https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/<%= name %>_latestversion.zsync" /<%= name %>.AppDir /appimage/$APPIMAGEFILENAME
+zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/$APPIMAGEFILENAME" -o /appimage/<%= name %>_latestversion.zsync /appimage/$APPIMAGEFILENAME
