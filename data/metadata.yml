@@ -1,7 +1,7 @@
 name: kdenlive
 binary: kdenlive
-packages: ''
-  #app specifc
+packages:
+  - libmlt-dev
 frameworks:
   build_kf5: true
   frameworks:
