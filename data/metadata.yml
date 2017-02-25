@@ -66,6 +66,7 @@ dependencies:
       build:
         buildsystem: make
         buildoptions: ''
+        insource: true
       depname: mlt
       source:
         type: git
