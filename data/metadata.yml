@@ -13,6 +13,7 @@ frameworks:
     - kauth
     - kcodecs
     - karchive
+    - kdebugsettings
     - kdoctools
     - kguiaddons
     - kwidgetsaddons
