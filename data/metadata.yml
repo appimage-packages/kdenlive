@@ -64,8 +64,8 @@ dependencies:
         url: ''
   - mlt:
       build:
-        buildsystem: make
-        buildoptions: ''
+        buildsystem: custom
+        buildoptions: './configure --enable-gpl --enable-gpl3 && make && make install'
         insource: true
       depname: mlt
       source:
