@@ -13,16 +13,16 @@ frameworks:
     - kauth
     - kcodecs
     - karchive
+    - kwidgetsaddons
+    - kcompletion
+    - kdbusaddons
     - kdebugsettings
     - kdoctools
     - kguiaddons
-    - kwidgetsaddons
     - kconfigwidgets
     - kiconthemes
-    - kcompletion
     - kwindowsystem
     - kcrash
-    - kdbusaddons
     - kservice
     - sonnet
     - ktextwidgets
