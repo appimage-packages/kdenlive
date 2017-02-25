@@ -65,7 +65,7 @@ dependencies:
   - mlt:
       build:
         buildsystem: custom
-        buildoptions: './configure --enable-gpl --enable-gpl3 && make && make install'
+        buildoptions: './configure --enable-gpl --enable-gpl3 --prefix=/opt/usr && make && make install'
         insource: true
       depname: mlt
       source:
