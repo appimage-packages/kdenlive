@@ -20,5 +20,6 @@
 export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PATH
 export WORKSPACE=`pwd`
 echo $WORKSPACE
-
+sudo add-apt-repository ppa:mc3man/trusty-media
+sudo apt-get update
 cd /in/ && rspec appimage-template/spec/recipe_rspec.rb --fail-fast

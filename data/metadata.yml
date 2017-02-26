@@ -2,6 +2,8 @@ name: kdenlive
 binary: kdenlive
 packages:
   - frei0r-plugins-dev
+  - ffmpeg
+  - libv4l2rds0
 frameworks:
   build_kf5: true
   frameworks:
@@ -73,3 +75,19 @@ dependencies:
         type: git
         url: 'https://github.com/mltframework/mlt'
         branch: master
+  - frei0r-plugins:
+      build:
+        buildsystem: cmake
+        buildoptions: ''
+      depname: frei0r-plugins-1.5.0
+      source:
+        type: gz
+        url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
+  - opencv:
+      build:
+        buildsystem: cmake
+        buildoptions: ''
+      depname: opencv-3.2.0
+      source:
+        type: zip
+        url: 'http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.2.0/opencv-3.2.0.zip'
