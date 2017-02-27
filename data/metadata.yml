@@ -71,14 +71,6 @@ dependencies:
       source:
         type: none
         url: ''
-  - numpy:
-      build:
-        buildsystem: custom
-        buildoptions: pip3 install numpy
-      depname: numpy
-      source:
-        type: none
-        url: ''
   - mlt:
       build:
         buildsystem: custom
