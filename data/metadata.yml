@@ -4,6 +4,12 @@ packages:
   - frei0r-plugins-dev
   - ffmpeg
   - libv4l2rds0
+  - libsdl2-dev
+  - libavcodec-dev
+  - libavformat-dev
+  - libavutil-dev
+  - libswscale-dev
+  - libavresample-dev
 frameworks:
   build_kf5: true
   frameworks:
@@ -65,6 +71,14 @@ dependencies:
       source:
         type: none
         url: ''
+  - numpy:
+      build:
+        buildsystem: custom
+        buildoptions: pip3 install numpy
+      depname: numpy
+      source:
+        type: none
+        url: ''
   - mlt:
       build:
         buildsystem: custom
@@ -86,7 +100,7 @@ dependencies:
   - opencv:
       build:
         buildsystem: cmake
-        buildoptions: ''
+        buildoptions:  '-DCMAKE_INSTALL_PREFIX:PATH=/opt/usr -DBUILD_TESTING=OFF'
       depname: opencv-3.2.0
       source:
         type: zip
