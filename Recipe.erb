@@ -56,8 +56,8 @@ cp /opt/usr/bin/gst* ./usr/bin/
 cp /opt/usr/bin/k* ./usr/bin/
 ls /opt/ffmpeg/
 cp /opt/ffmpeg/bin/* ./usr/bin/
-cp /opt/ffmpeg/lib/* ./usr/lib/
-cp /opt/ffmpeg/share/* ./usr/share/
+cp -rfv /opt/ffmpeg/lib/* ./usr/lib/
+cp -rfv /opt/ffmpeg/share/* ./usr/share/
 mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
 cp /opt/usr/lib/gstreamer-1.0/* ./lib/
