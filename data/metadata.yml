@@ -1,15 +1,8 @@
 name: kdenlive
 binary: kdenlive
 packages:
-  - ffmpeg
   - libv4l2rds0
   - libsdl2-dev
-  - libavcodec-dev
-  - libavformat-dev
-  - libavutil-dev
-  - libswscale-dev
-  - libavresample-dev
-  - libavdevice-dev
   - fftw-dev
   - libsamplerate0-dev
   - libsdl2-dev
@@ -101,3 +94,11 @@ dependencies:
         type: git
         url: 'https://github.com/mltframework/mlt'
         branch: master
+  - ffmpeg:
+      build:
+        buildsystem: custom
+        buildoptions: /in/ffmepg.sh
+      depname: ffmepg
+      source:
+        type: none
+        url: ''
