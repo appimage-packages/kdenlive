@@ -9,6 +9,11 @@ packages:
   - libavutil-dev
   - libswscale-dev
   - libavresample-dev
+  - libavdevice-dev
+  - libmovit-dev
+  - fftw-dev
+  - libsamplerate0-dev
+  - libsdl2-dev
 frameworks:
   build_kf5: true
   frameworks:
@@ -70,6 +75,22 @@ dependencies:
       source:
         type: none
         url: ''
+  - frei0r-plugins:
+      build:
+        buildsystem: cmake
+        buildoptions: ''
+      depname: frei0r-plugins-1.5.0
+      source:
+        type: gz
+        url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
+  - opencv:
+      build:
+        buildsystem: cmake
+        buildoptions:  '-DCMAKE_INSTALL_PREFIX:PATH=/opt/usr -DBUILD_TESTING=OFF'
+      depname: opencv-3.2.0
+      source:
+        type: zip
+        url: 'http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.2.0/opencv-3.2.0.zip'
   - mlt:
       build:
         buildsystem: custom
@@ -80,19 +101,3 @@ dependencies:
         type: git
         url: 'https://github.com/mltframework/mlt'
         branch: master
-  - opencv:
-      build:
-        buildsystem: cmake
-        buildoptions:  '-DCMAKE_INSTALL_PREFIX:PATH=/opt/usr -DBUILD_TESTING=OFF'
-      depname: opencv-3.2.0
-      source:
-        type: zip
-        url: 'http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.2.0/opencv-3.2.0.zip'
-  - frei0r-plugins:
-      build:
-        buildsystem: cmake
-        buildoptions: ''
-      depname: frei0r-plugins-1.5.0
-      source:
-        type: gz
-        url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
