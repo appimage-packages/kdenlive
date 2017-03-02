@@ -52,7 +52,7 @@ rsync -aruxv --progress /opt/usr/resources/ ./usr/bin/
 rsync -aruxv --progress /opt/usr/translations/ ./usr/bin/
 cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./usr/lib/
 
-cp /opt/usr/bin/gst* ./bin/
+cp /opt/usr/bin/gst* ./usr/bin/
 cp /opt/usr/bin/k* ./usr/bin/
 ls /opt/ffmpeg/
 cp /opt/ffmpeg/bin/* ./usr/bin/
@@ -138,7 +138,7 @@ export XDG_CONFIG_DIRS=\$HERE/.config:\$HERE/etc/xdg:\$XDG_CONFIG_DIRS
 export KDE_FORK_SLAVES=1
 export KF5_LIBEXEC_DIR=\$HERE/usr/bin
 export GST_PLUGIN_PATH=\$HERE/lib
-export GST_PLUGIN_SCANNER=\$HERE/bin
+export GST_PLUGIN_SCANNER=\$HERE/usr/bin
 export MLT_REPOSITORY=\$HERE/usr/lib
 export MLT_DATA=\$HERE/usr/share/mlt/
 export MLT_ROOT_DIR=\$HERE/usr/
