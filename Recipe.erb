@@ -54,10 +54,9 @@ cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./usr/lib/
 
 cp /opt/usr/bin/gst* ./usr/bin/
 cp /opt/usr/bin/k* ./usr/bin/
-ls /opt/ffmpeg/
-cp /opt/ffmpeg/bin/* ./usr/bin/
-cp -rfv /opt/ffmpeg/lib/* ./usr/lib/
-cp -rfv /opt/ffmpeg/share/* ./usr/share/
+cp /opt/usr/ffmpeg/bin/* ./usr/bin/
+cp -rfv /opt/usr/ffmpeg/lib/* ./usr/lib/
+cp -rfv /opt/usr/ffmpeg/share/* ./usr/share/
 mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
 cp /opt/usr/lib/gstreamer-1.0/* ./lib/
