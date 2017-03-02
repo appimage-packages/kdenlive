@@ -10,10 +10,10 @@ packages:
   - libswscale-dev
   - libavresample-dev
   - libavdevice-dev
-  - libmovit-dev
   - fftw-dev
   - libsamplerate0-dev
   - libsdl2-dev
+  - libsox-dev
 frameworks:
   build_kf5: true
   frameworks:
