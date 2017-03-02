@@ -71,7 +71,7 @@ dependencies:
   - ffmpeg:
       build:
         buildsystem: custom
-        buildoptions: /in/ffmpeg.sh
+        buildoptions: /bin/bash /in/ffmpeg.sh
       depname: ffmepg
       source:
         type: none
