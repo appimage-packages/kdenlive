@@ -78,7 +78,7 @@ dependencies:
   - frei0r-plugins:
       build:
         buildsystem: cmake
-        buildoptions: ''
+        buildoptions: '-DCMAKE_INSTALL_PREFIX:PATH=/opt/usr -DBUILD_TESTING=OFF'
       depname: frei0r-plugins-1.5.0
       source:
         type: gz
