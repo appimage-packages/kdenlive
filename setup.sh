@@ -21,4 +21,5 @@ export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PA
 export WORKSPACE=`pwd`
 echo $WORKSPACE
 RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse" >> /etc/apt/sources.list
+apt update
 cd /in/ && rspec appimage-template/spec/recipe_rspec.rb --fail-fast
