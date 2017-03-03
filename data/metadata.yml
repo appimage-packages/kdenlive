@@ -8,7 +8,6 @@ packages:
   - libsdl2-dev
   - libsox-dev
   - libass-dev
-  - libfdk-aac-dev
 frameworks:
   build_kf5: true
   frameworks:

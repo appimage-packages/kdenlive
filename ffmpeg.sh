@@ -10,7 +10,6 @@ cd ffmpeg
   --bindir="/opt/usr/bin" \
   --enable-gpl \
   --enable-libass \
-  --enable-libfdk-aac \
   --enable-libfreetype \
   --enable-libmp3lame \
   --enable-libopus \
