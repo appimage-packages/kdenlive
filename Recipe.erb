@@ -56,7 +56,7 @@ cp /opt/usr/bin/gst* ./usr/bin/
 cp /opt/usr/bin/k* ./usr/bin/
 mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
-cp /opt/usr/lib/gstreamer-1.0/* ./lib/
+cp -rfv /opt/usr/lib/gstreamer-1.0 ./lib/
 cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./lib/
 cp -rfv /usr/share/mime ./usr/share/
 cp /etc/mime.types ./etc/
@@ -64,7 +64,7 @@ update-mime-database ./usr/share/mime
 
 mv /opt/usr/libexec/Qt* ./usr/bin/ || true
 mv /opt/usr/lib/x86_64-linux-gnu/libexec/kf5/* ./usr/bin/ || true
-mv /opt/usr/libexec/gstreamer-1.0/* ./usr/bin || true
+mv /opt/usr/libexec/gstreamer-1.0/* ./usr/bin/ || true
 cp -rfv /opt/usr/lib/x86_64-linux-gnu/* /opt/usr/lib/
 unset LD_LIBRARY_PATH
 ../linuxdeployqt-1-x86_64.AppImage <%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
