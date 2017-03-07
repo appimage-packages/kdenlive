@@ -44,6 +44,7 @@ mkdir -p ./plugins; cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend $_
 mkdir -p ./usr/{share,bin,sbin,lib}
 mkdir ./etc
 rsync -aruxv --progress /opt/usr/lib/mlt/ ./usr/lib/
+rsync -aruxv --progress /opt/usr/lib/frei0r-1/ ./usr/lib/
 rsync -aruxv --progress /opt/usr/plugins/ ./plugins/
 rsync -aruxv --progress /opt/usr/share/ ./usr/share/
 rsync -aruxv --progress /opt/etc/ ./etc/
