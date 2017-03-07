@@ -53,6 +53,7 @@ rsync -aruxv --progress /opt/usr/translations/ ./usr/bin/
 cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./usr/lib/
 
 cp /opt/usr/bin/gst* ./usr/bin/
+cp /usr/bin/dbus-launch ./usr/bin/
 cp /opt/usr/bin/k* ./usr/bin/
 mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
@@ -142,7 +143,8 @@ export FREI0R_PATH=\$HERE/usr/lib
 export MLT_PROFILES_PATH=\$HERE/usr/share/mlt/profiles
 export MLT_PRESETS_PATH=\$HERE/usr/share/mlt/presets
 export XDG_RUNTIME_DIR=/run/user/\$UID
-<%= binary %> $@
+
+dbus-launch <%= binary %> $@
 
 EOF
 chmod +x AppRun
