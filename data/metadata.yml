@@ -8,6 +8,7 @@ packages:
   - libsdl2-dev
   - libsox-dev
   - libass-dev
+  - dbus-x11
 frameworks:
   build_kf5: true
   frameworks:
