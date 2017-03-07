@@ -51,7 +51,6 @@ rsync -aruxv --progress /opt/etc/ ./etc/
 rsync -aruxv --progress /opt/usr/qml/ ./qml/
 rsync -aruxv --progress /opt/usr/resources/ ./usr/bin/
 rsync -aruxv --progress /opt/usr/translations/ ./usr/bin/
-cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./usr/lib/
 
 cp /opt/usr/bin/gst* ./usr/bin/
 cp /usr/bin/dbus-launch ./usr/bin/
@@ -60,6 +59,7 @@ mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
 cp -rfv /opt/usr/lib/gstreamer-1.0 ./lib/
 cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./lib/
+cp /lib/x86_64-linux-gnu/libdbus-1.so.3* ./lib/
 cp -rfv /usr/share/mime ./usr/share/
 cp /etc/mime.types ./etc/
 update-mime-database ./usr/share/mime
