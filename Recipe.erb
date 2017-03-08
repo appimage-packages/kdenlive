@@ -43,8 +43,8 @@ cp /opt/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
 mkdir -p ./plugins; cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend $_
 mkdir -p ./usr/{share,bin,sbin,lib}
 mkdir ./etc
-rsync -aruxv --progress /opt/usr/lib/mlt/ ./usr/lib/
-rsync -aruxv --progress /opt/usr/lib/frei0r-1/ ./usr/lib/
+rsync -aruxv --progress /opt/usr/lib/mlt ./usr/lib/
+rsync -aruxv --progress /opt/usr/lib/frei0r-1 ./usr/lib/
 rsync -aruxv --progress /opt/usr/plugins/ ./plugins/
 rsync -aruxv --progress /opt/usr/share/ ./usr/share/
 rsync -aruxv --progress /opt/etc/ ./etc/
@@ -138,15 +138,17 @@ export KDE_FORK_SLAVES=1
 export KF5_LIBEXEC_DIR=\$HERE/usr/bin
 export GST_PLUGIN_PATH=\$HERE/lib
 export GST_PLUGIN_SCANNER=\$HERE/usr/bin
-export MLT_REPOSITORY=\$HERE/usr/lib
+export MLT_REPOSITORY=\$HERE/usr/lib/mlt
 export MLT_DATA=\$HERE/usr/share/mlt
 export MLT_ROOT_DIR=\$HERE/usr
-export FREI0R_PATH=\$HERE/usr/lib
+export FREI0R_PATH=\$HERE/usr/lib/frei0r-1
 export MLT_PROFILES_PATH=\$HERE/usr/share/mlt/profiles
 export MLT_PRESETS_PATH=\$HERE/usr/share/mlt/presets
 export XDG_RUNTIME_DIR=/run/user/\$UID
+export SDL_AUDIODRIVER=alsa
+export XDG_CURRENT_DESKTOP=
 
-dbus-launch <%= binary %> $@
+kdenlive --config kdenlive-appimagerc \$@
 
 EOF
 chmod +x AppRun
