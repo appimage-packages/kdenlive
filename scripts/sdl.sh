@@ -54,7 +54,7 @@ diff -r f7fd5c3951b9 -r 91ad7b43317a src/video/x11/SDL_x11sym.h
 EOF
 	cat sdl_fix.patch |patch -p1
 	cd ..
-fi
+
 cd SDL-1.2.15
 if ./configure --prefix=/opt/usr; then
 
