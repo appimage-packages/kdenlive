@@ -39,7 +39,7 @@ mkdir -p $SRC/build
 # go there
 cd $SRC/build
 
-if cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX $EXTERNAL_CMAKE_OPTIONS $SRC/opencv
+if cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX $EXTERNAL_CMAKE_OPTIONS $SRC/opencv; then
 
 # make
 make -j8
