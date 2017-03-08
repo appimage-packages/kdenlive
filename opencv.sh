@@ -15,17 +15,9 @@ else
 fi
 
 cd /app/src/
-if ( test -d /app/src/opencv )
-then
-        echo "opencv already cloned"
-        cd opencv
-        git reset --hard
-#        git pull --rebase
-        git checkout 3.2.0
-        cd ..
-else
-       git clone https://github.com/opencv/opencv.git
-fi
+git clone https://github.com/opencv/opencv.git
+cd opencv
+git checkout 3.2.0
 
 #opencv
 EXTERNAL_CMAKE_OPTIONS="-DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_opencv_aruco=OFF -DBUILD_opencv_bgsegm=OFF \
