@@ -29,7 +29,7 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 setup_path = `pwd`
-p setup_path
+
 project = 'kdenlive'
 builder = CI.new
 unless Dir.exist?('app')
@@ -39,18 +39,5 @@ unless Dir.exist?('appimage')
   Dir.mkdir('appimage')
 end
 builder.run = [CI::Build.new(project)]
-builder.cmd = %w[bash -c /in/setup.sh]
+builder.cmd = %w[bash -c /in/scripts/setup.sh]
 builder.create_container(project)
-# begin
-#   PTY.spawn( cmd ) do |stdout, stdin, pid|
-#     begin
-#       # Do stuff with the output here. Just printing to show it works
-#       stdout.each { |line| print line }
-#     rescue Errno::EIO
-#       puts "Errno:EIO error, but this probably just means " +
-#             "that the process has finished giving output"
-#     end
-#   end
-# rescue PTY::ChildExited
-#   puts "The child process exited!"
-# end
