@@ -57,6 +57,7 @@ frameworks:
     - breeze
     - knotifyconfig
     - kfilemetadata
+    - frameworkintegration
 type: git
 url: http://anongit.kde.org/kdenlive
 buildsystem: cmake
