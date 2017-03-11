@@ -9,6 +9,7 @@ packages:
   - libsox-dev
   - libass-dev
   - dbus-x11
+  - clang-3.8
 frameworks:
   build_kf5: true
   frameworks:
