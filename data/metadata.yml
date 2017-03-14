@@ -86,6 +86,17 @@ dependencies:
         type: bz2
         url: http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.6.1.tar.bz2
         branch: master
+  - frei0r-plugins:
+      build:
+        buildsystem: cmake
+        buildoptions: '-DCMAKE_INSTALL_PREFIX=/opt/usr    \
+      -DCMAKE_BUILD_TYPE=Release     \
+      -DOpenCV_DIR=/opt/usr/share/OpenCV \
+      -Wno-dev'
+      depname: frei0r-plugins-1.5.0
+      source:
+        type: gz
+        url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
   - x264:
       build:
         buildsystem: custom
@@ -125,17 +136,6 @@ dependencies:
       source:
         type: none
         url: ''
-  - frei0r-plugins:
-      build:
-        buildsystem: cmake
-        buildoptions: '-DCMAKE_INSTALL_PREFIX=/opt/usr    \
-      -DCMAKE_BUILD_TYPE=Release     \
-      -DOpenCV_DIR=/opt/usr/share/OpenCV \
-      -Wno-dev'
-      depname: frei0r-plugins-1.5.0
-      source:
-        type: gz
-        url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
   - mlt:
       build:
         buildsystem: custom
