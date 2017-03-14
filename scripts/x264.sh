@@ -10,7 +10,7 @@ function error_exit
 }
 
 if wget ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2; then
-	tar xjvf last_x264.tar.bz2
+	tar xjvf last_x264.tar.bz2 x264
 else
 	error_exit "$LINENO: An error has occurred.. Aborting."
 fi
