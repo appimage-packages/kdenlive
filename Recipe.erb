@@ -146,7 +146,7 @@ export MLT_PRESETS_PATH=\$HERE/usr/share/mlt/presets
 export XDG_RUNTIME_DIR=/run/user/\$UID
 export SDL_AUDIODRIVER=alsa
 export XDG_CURRENT_DESKTOP=
-
+export QT_STYLE_OVERRIDE=
 kdenlive --config kdenlive-appimagerc \$@
 
 EOF
@@ -165,5 +165,6 @@ APPIMAGEFILENAME="<%= name %>-git$DATE-$ARCH.AppImage"
 #Re set LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/usr/lib:/opt/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib64
 gpg2 --import /root/.gnupg/appimage.key
-./appimagetool-x86_64.AppImage -v -s -u "zsync|https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/<%= name %>_latestversion.zsync" /<%= name %>.AppDir /appimage/$APPIMAGEFILENAME
-zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/$APPIMAGEFILENAME" -o /appimage/<%= name %>_latestversion.zsync /appimage/$APPIMAGEFILENAME
+./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimage/$APPIMAGEFILENAME
+./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimage/<%= name %>-latest-$ARCH.AppImage
+zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimage/<%= name %>_latestversion.zsync /appimage/$APPIMAGEFILENAME

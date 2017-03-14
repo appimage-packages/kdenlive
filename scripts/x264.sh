@@ -15,7 +15,7 @@ if wget ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2; then
 else
 	error_exit "$LINENO: An error has occurred.. Aborting."
 fi
-if cd x264-snapshot-20170313-2245; then
+if cd x264; then
 	  ./configure --enable-static --enable-shared --prefix=/opt/usr
 	  make -j4 && make install
 else
