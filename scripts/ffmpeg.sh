@@ -7,7 +7,6 @@ function error_exit
 	echo "$1" 1>&2
 	exit 1
 }
-mv /opt/usr/./include/frei0r.h /opt/usr/include/
 
 if wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2; then
 	tar xjvf ffmpeg-snapshot.tar.bz2
