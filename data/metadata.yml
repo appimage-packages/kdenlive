@@ -19,6 +19,7 @@ packages:
   - libmp3lame-dev
   - libopencore-amrnb-dev
   - libopencore-amrwb-dev
+  - libschroedinger-dev
 frameworks:
   build_kf5: true
   frameworks:
