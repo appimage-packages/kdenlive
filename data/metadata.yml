@@ -17,6 +17,8 @@ packages:
   - dvdauthor
   - libgsm1-dev
   - libmp3lame-dev
+  - libopencore-amrnb-dev
+  - libopencore-amrwb-dev
 frameworks:
   build_kf5: true
   frameworks:
