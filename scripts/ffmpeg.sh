@@ -8,11 +8,8 @@ function error_exit
 	exit 1
 }
 
-if wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2; then
-	tar xjvf ffmpeg-snapshot.tar.bz2
-else
-	error_exit "$LINENO: An error has occurred.. Aborting."
-fi
+git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
+
 export CPLUS_INCLUDE_PATH=/opt/usr/include:/usr/include:$CPLUS_INCLUDE_PATH
 if cd ffmpeg; then
 	 ./configure --prefix="/usr" --disable-doc --disable-ffserver --enable-gpl --enable-version3 --enable-shared --enable-static --enable-debug --enable-pthreads --enable-runtime-cpudetect --enable-frei0r --enable-avfilter && \
