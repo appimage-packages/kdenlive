@@ -16,6 +16,7 @@ packages:
   - libcvaux-dev
   - dvdauthor
   - libgsm1-dev
+  - libmp3lame-dev
 frameworks:
   build_kf5: true
   frameworks:
