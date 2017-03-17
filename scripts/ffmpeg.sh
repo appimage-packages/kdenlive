@@ -13,7 +13,7 @@ if wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2; then
 else
 	error_exit "$LINENO: An error has occurred.. Aborting."
 fi
-export CPLUS_INCLUDE_PATH=/opt/usr/include:$CPLUS_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=/opt/usr/include:/usr/include:$CPLUS_INCLUDE_PATH
 if cd ffmpeg; then
 	 ./configure --prefix="/usr" --disable-doc --disable-ffserver --enable-gpl --enable-version3 --enable-shared --enable-static --enable-debug --enable-pthreads --enable-runtime-cpudetect --enable-frei0r && \
 	  make -j4 && make install
