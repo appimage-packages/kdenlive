@@ -15,6 +15,7 @@ packages:
   - libhighgui-dev
   - libcvaux-dev
   - dvdauthor
+  - libgsm1-dev
 frameworks:
   build_kf5: true
   frameworks:
