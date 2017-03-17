@@ -98,6 +98,7 @@ dependencies:
         buildoptions: '-DCMAKE_INSTALL_PREFIX=/opt/usr    \
       -DCMAKE_BUILD_TYPE=Release     \
       -DOpenCV_DIR=/opt/usr/share/OpenCV \
+      -DBUILD_SHARED_LIBS=OFF \
       -Wno-dev'
       depname: frei0r-plugins-1.5.0
       source:
