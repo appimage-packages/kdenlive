@@ -19,6 +19,7 @@
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PATH
 export WORKSPACE=`pwd`
+export CPATH=/opt/usr/include:/usr/include
 echo $WORKSPACE
 
 cd /in/ && rspec appimage-template/spec/recipe_rspec.rb --fail-fast
