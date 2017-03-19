@@ -29,7 +29,7 @@ mkdir -p $SRC/build
 # go there
 cd $SRC/build
 
-if cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX; then
+if cmake .. -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX; then
 
 # make
 make -j8
