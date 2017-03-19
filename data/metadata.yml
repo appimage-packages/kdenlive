@@ -146,7 +146,7 @@ dependencies:
   - mlt:
       build:
         buildsystem: custom
-        buildoptions: './configure --enable-gpl --enable-gpl3 --disable-rtaudio --prefix=/usr --avformat-static=/usr/lib --avformat-ldextra=avdevice && make V=1 && make install'
+        buildoptions: './configure --enable-gpl --enable-gpl3 --disable-rtaudio --prefix=/usr --avformat-static=/usr/lib && make V=1 && make install'
         insource: false
       depname: mlt
       source:
