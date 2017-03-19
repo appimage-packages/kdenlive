@@ -86,12 +86,19 @@ dependencies:
   - libvpx:
       build:
         buildsystem: make
-        buildoptions: '--enable-static --enable-shared'
+        buildoptions: '--enable-vp8 --enable-postproc --enable-multithread --enable-runtime-cpu-detect --disable-install-docs --disable-debug-libs --disable-examples --disable-unit-tests'
       depname: libvpx-1.6.1
       source:
         type: bz2
         url: http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.6.1.tar.bz2
-        branch: master
+  - opencv:
+      build:
+        buildsystem: custom
+        buildoptions: /bin/bash /in/scripts/opencv.sh
+      depname: opencv
+      source:
+        type: none
+        url: ''
   - frei0r-plugins:
       build:
         buildsystem: cmake
@@ -135,18 +142,10 @@ dependencies:
       source:
         type: none
         url: ''
-  - opencv:
-      build:
-        buildsystem: custom
-        buildoptions: /bin/bash /in/scripts/opencv.sh
-      depname: opencv
-      source:
-        type: none
-        url: ''
   - mlt:
       build:
         buildsystem: custom
-        buildoptions: './configure --enable-gpl --enable-gpl3 --disable-rtaudio --prefix=/usr --avformat-static=/usr/lib && make V=1 && make install'
+        buildoptions: /bin/bash /in/scripts/mlt.sh
         insource: false
       depname: mlt
       source:
