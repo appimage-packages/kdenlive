@@ -21,6 +21,7 @@ packages:
   - libopencore-amrwb-dev
   - libschroedinger-dev
   - libxvidcore-dev
+  - speech-dispatcher-festival
 frameworks:
   build_kf5: true
   frameworks:
@@ -150,4 +151,4 @@ dependencies:
       depname: mlt
       source:
         type: none
-        url: ''        
+        url: ''
