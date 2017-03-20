@@ -153,6 +153,8 @@ EOF
 chmod +x AppRun
 mv <%= binary %> ./usr/bin/
 mv /opt/usr/bin/ff* ./usr/bin/
+mv /usr/bin/{dvdauthor,mkisofs} ./usr/bin/
+
 cp <%= binary %>.desktop ./usr/share/applications/
 cd /
 wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
