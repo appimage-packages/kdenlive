@@ -152,6 +152,7 @@ kdenlive --config kdenlive-appimagerc \$@
 EOF
 chmod +x AppRun
 mv <%= binary %> ./usr/bin/
+mv /opt/usr/bin/ff* ./usr/bin/
 cp <%= binary %>.desktop ./usr/share/applications/
 cd /
 wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
