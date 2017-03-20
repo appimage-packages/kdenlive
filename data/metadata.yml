@@ -22,6 +22,7 @@ packages:
   - libschroedinger-dev
   - libxvidcore-dev
   - speech-dispatcher-festival
+  - vlc
 frameworks:
   build_kf5: true
   frameworks:
