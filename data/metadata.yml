@@ -113,14 +113,6 @@ dependencies:
       source:
         type: gz
         url: 'https://files.dyne.org/frei0r/releases/frei0r-plugins-1.5.0.tar.gz'
-  - ffmpeg:
-      build:
-        buildsystem: custom
-        buildoptions: /bin/bash /in/scripts/ffmpeg.sh
-      depname: ffmepg
-      source:
-        type: none
-        url: ''
   - x264:
       build:
         buildsystem: custom
@@ -133,6 +125,14 @@ dependencies:
       build:
         buildsystem: custom
         buildoptions: /bin/bash /in/scripts/x265.sh
+      source:
+        type: none
+        url: ''
+  - ffmpeg:
+      build:
+        buildsystem: custom
+        buildoptions: /bin/bash /in/scripts/ffmpeg.sh
+      depname: ffmepg
       source:
         type: none
         url: ''
