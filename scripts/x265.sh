@@ -15,7 +15,7 @@ else
 fi
 
 if cd x265_2.3/build/linux; then
-	  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/opt/usr" -DENABLE_PIC=ON -DENABLE_SHARED=OFF ../../source
+	  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/opt/usr" -DENABLE_PIC=ON -DENABLE_SHARED=ON ../../source
 	  make -j4 && make install
 else
 	error_exit "$LINENO: An error has occurred.. Aborting."
