@@ -40,7 +40,7 @@ cp /opt/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
 
 
 #All the plugins do not seem to be getting in. Manual copy.
-mkdir -p ./plugins; cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend $_
+mkdir -p ./plugins
 mkdir -p ./usr/{share,bin,sbin,lib}
 mkdir ./etc
 rsync -aruxv --progress /opt/usr/plugins/ ./plugins/
@@ -59,6 +59,7 @@ cp /opt/usr/bin/k* ./usr/bin/
 mkdir ./lib
 rm -rfv /opt/usr/lib/gstreamer-1.0/include
 cp -rfv /opt/usr/lib/gstreamer-1.0 ./lib/
+mv /opt/usr/lib/qt5/plugins/phonon4qt5_backend ./usr/lib/
 cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./lib/
 cp /lib/x86_64-linux-gnu/libdbus-1.so.3* ./lib/
 cp -rfv /usr/share/mime ./usr/share/
@@ -147,6 +148,7 @@ export XDG_RUNTIME_DIR=/run/user/\$UID
 export SDL_AUDIODRIVER=alsa
 export XDG_CURRENT_DESKTOP=
 export QT_STYLE_OVERRIDE=
+
 kdenlive --config kdenlive-appimagerc \$@
 
 EOF
