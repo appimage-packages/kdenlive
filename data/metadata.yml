@@ -88,7 +88,7 @@ dependencies:
   - libvpx:
       build:
         buildsystem: make
-        buildoptions: '--enable-vp8 --enable-postproc --enable-multithread --enable-runtime-cpu-detect --disable-install-docs --disable-debug-libs --disable-examples --disable-unit-tests'
+        buildoptions: '--enable-vp9 --enable-static --enable-shared --enable-postproc --enable-multithread --enable-runtime-cpu-detect --disable-install-docs --disable-debug-libs --disable-examples --disable-unit-tests'
       depname: libvpx-1.6.1
       source:
         type: bz2
