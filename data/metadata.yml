@@ -23,6 +23,7 @@ packages:
   - libxvidcore-dev
   - speech-dispatcher-festival
   - vlc
+  - genisoimage
 frameworks:
   build_kf5: true
   frameworks:
