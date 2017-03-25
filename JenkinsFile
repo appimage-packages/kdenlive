@@ -38,7 +38,6 @@ node('linux') {
             checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'kdenlive']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/kdenlive']]]
        }
-       }
         stage( 'Setup' ) {
             sh 'rbenv local 2.3.0 && bundle install'
             def WORKSPACE=pwd()
