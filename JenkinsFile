@@ -25,7 +25,7 @@ node('linux') {
 
     currentBuild.result = "SUCCESS"
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), \
-   [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/appimage-packages/kexi/'], pipelineTriggers([cron('H H(0-2) * * *'), [$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
+   [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/appimage-packages/kdenlive/'], pipelineTriggers([cron('H H(0-2) * * *'), [$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
 
     try {
 
