@@ -26,7 +26,7 @@ node('linux') {
     currentBuild.result = "SUCCESS"
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), \
    [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/appimage-packages/kexi/'], pipelineTriggers([cron('H H(0-2) * * *'), [$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
-   
+
     try {
 
         stage( 'Checkout' ) {
@@ -38,8 +38,9 @@ node('linux') {
             checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'kdenlive']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/kdenlive']]]
        }
+       }
         stage( 'Setup' ) {
-            sh 'bundle install'
+            sh 'rbenv local 2.3.0 && bundle install'
             def WORKSPACE=pwd()
         }
         stage( 'Build' ) {
