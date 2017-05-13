@@ -109,6 +109,10 @@ rm -rf ./usr/share/util-macros || true
 find . -name '*.a' -exec rm {} \;
 strip -g $(find . -type f -exec) || true
 find . -type f -exec file {} \; | grep "not stripped"
+
+# libEGL crash on non debian platforms
+rm -f ./lib/libEGL*
+
 #Add back libkrb5
 cp /usr/lib/x86_64-linux-gnu/libkrb5* ./lib/
 get_desktopintegration <%= name %>
