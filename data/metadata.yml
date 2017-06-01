@@ -24,7 +24,6 @@ packages:
   - speech-dispatcher-festival
   - vlc
   - genisoimage
-  - nasm
 frameworks:
   build_kf5: true
   frameworks:
@@ -115,6 +114,14 @@ dependencies:
       source:
         type: gz
         url: 'https://files.dyne.org/frei0r/frei0r-plugins-1.6.1.tar.gz'
+  - nasm:
+      build:
+        buildsystem: make
+        buildoptions: '--prefix=/opt/usr'
+      depname: nasm-2.13.01
+      source:
+        type: xz
+        url: http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz
   - x264:
       build:
         buildsystem: custom
