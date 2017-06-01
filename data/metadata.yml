@@ -24,6 +24,7 @@ packages:
   - speech-dispatcher-festival
   - vlc
   - genisoimage
+  - nasm
 frameworks:
   build_kf5: true
   frameworks:
