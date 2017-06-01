@@ -110,10 +110,10 @@ dependencies:
       -DOpenCV_DIR=/opt/usr/share/OpenCV \
       -DBUILD_SHARED_LIBS=OFF \
       -Wno-dev'
-      depname: frei0r-plugins-1.6.0
+      depname: frei0r-plugins-1.6.1
       source:
         type: gz
-        url: 'https://files.dyne.org/frei0r/frei0r-plugins-1.6.0.tar.gz'
+        url: 'https://files.dyne.org/frei0r/frei0r-plugins-1.6.1.tar.gz'
   - x264:
       build:
         buildsystem: custom
