@@ -107,8 +107,13 @@ rm -rf ./usr/share/gnupg || true
 rm -rf ./usr/share/gobject-introspection-1.0 || true
 rm -rf ./usr/share/util-macros || true
 find . -name '*.a' -exec rm {} \;
-#strip -g $(find . -type f -exec) || true
+strip -g $(find . -type f -exec) || true
 find . -type f -exec file {} \; | grep "not stripped"
+
+# Crash because KFileMetadata is linked to older FFmpeg version
+rm -f ./lib/libavutil.so.52
+rm -f ./lib/libavformat.so.54
+rm -f ./lib/libavcodec.so.54
 
 # libEGL crash on non debian platforms
 rm -f ./lib/libEGL*
