@@ -22,4 +22,10 @@ export WORKSPACE=`pwd`
 echo $WORKSPACE
 RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
+apt -y install python-software-properties
+add-apt-repository -y ppa:ubuntu-toolchain-r/test
+apt-get update
+apt-get install gcc-5 g++-5
+
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 cd /in/ && rspec appimage-template/spec/recipe_rspec.rb --fail-fast
