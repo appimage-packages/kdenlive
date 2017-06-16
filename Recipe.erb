@@ -107,7 +107,7 @@ rm -rf ./usr/share/gnupg || true
 rm -rf ./usr/share/gobject-introspection-1.0 || true
 rm -rf ./usr/share/util-macros || true
 find . -name '*.a' -exec rm {} \;
-strip -g $(find . -type f -exec) || true
+find . -type f -executable -exec strip {} \;
 find . -type f -exec file {} \; | grep "not stripped"
 
 # Crash because KFileMetadata is linked to older FFmpeg version
